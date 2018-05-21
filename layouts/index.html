@@ -1,0 +1,14 @@
+
+{{ define "main" }}
+
+<div>
+    {{ .Content }}
+</div>
+
+<h1>Recent Posts</h1>
+
+{{ range first 10 (where .Data.Pages "Type" "posts").ByPublishDate.Reverse }}
+    {{ .Render "summary" }}
+{{ end }}
+
+{{ end }}

@@ -1,0 +1,20 @@
+<div>
+    <ul>
+        {{ range .Site.Menus.main }}
+        <li>
+            <a href="{{ .URL }}">
+                {{ .Name | title }}
+            </a>
+            {{ if .HasChildren }}
+            <ul>
+                {{ range .Children }}
+                <a href="{{ .URL }}">
+                {{ .Name | title }}
+                </a>
+                {{ end }}
+            </ul>
+            {{ end }}
+        </li>
+        {{ end }}
+    </ul>
+</div>

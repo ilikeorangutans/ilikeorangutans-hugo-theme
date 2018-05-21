@@ -1,0 +1,13 @@
+{{ define "main" }}
+<h1>
+    {{ .Data.Term }}
+</h1>
+{{ range .Data.Pages }}
+    <a href="{{ .Permalink | relURL }}">
+        {{ .Title }}
+        {{ .Permalink }}
+    </a>
+{{ end }}
+
+
+{{ end }}
