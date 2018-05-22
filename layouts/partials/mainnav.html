@@ -1,20 +1,32 @@
-<div>
-    <ul>
-        {{ range .Site.Menus.main }}
-        <li>
-            <a href="{{ .URL }}">
-                {{ .Name | title }}
-            </a>
-            {{ if .HasChildren }}
-            <ul>
-                {{ range .Children }}
-                <a href="{{ .URL }}">
-                {{ .Name | title }}
-                </a>
-                {{ end }}
-            </ul>
-            {{ end }}
-        </li>
-        {{ end }}
-    </ul>
+<div class="container grid-lg">
+  <header class="navbar hide-sm">
+    <section class="navbar-section">
+      <a href="{{ "/" | relURL }}" class="navbar-brand">
+        {{ .Site.Title }}
+      </a>
+    </section>
+    <section class="navbar-section">
+      {{ range .Site.Menus.main }}
+        <a href="{{ .URL }}" class="btn btn-link">
+          {{ .Name | title }}
+        </a>
+      {{ end }}
+    </section>
+  </header>
+
+  <header class="show-sm columns">
+    <div class="column col-12">
+      <a href="{{ "/" | relURL }}" class="navbar-brand">
+        {{ .Site.Title }}
+      </a>
+    </div>
+    <div class="column col-12">
+      {{ range .Site.Menus.main }}
+        <a href="{{ .URL }}" class="btn btn-link">
+          {{ .Name | title }}
+        </a>
+      {{ end }}
+    </div>
+  </header>
 </div>
+<div class="divider"></div>

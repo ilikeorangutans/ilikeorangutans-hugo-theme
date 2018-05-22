@@ -1,7 +1,28 @@
-<article>
-  <h2>
-      <a href="{{ .Permalink | relURL }}">
-          {{ .Title }}
-      </a>
-    </h2>
+<article class="mb-2">
+    <div class="divider"></div>
+    <div class="tile">
+        <div class="tile-content">
+            <p class="tile-title h4">
+                <a href="{{ .URL | relURL }}">
+                    {{ .Title }}
+                </a>
+            </p>
+            <p class="tile-subtitle">
+                {{ .PublishDate.Format "02 Jan 2006" }}, tagged:
+                {{ $tags := .Params.Tags }}
+                {{ $tagCount := len $tags }}
+                {{ range $index, $tag := $tags }}
+                    <a href="{{ "/tags/" | relURL }}{{ $tag | urlize }}" class="">
+                        {{ $tag }}{{ if gt $tagCount (add $index 1)}}, {{ end }}
+                    </a>
+                {{ end }}
+            </p>
+            <p class="tile-subtitle">
+                {{ .Summary }}
+            </p>
+            <p class="tile-action">
+                <a href="{{ .URL | relURL }}" class="btn-primary">read more &rarr;</a>
+            </p>
+        </div>
+    </div>
 </article>

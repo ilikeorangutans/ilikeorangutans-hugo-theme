@@ -1,0 +1,22 @@
+<article class="mb-2">
+  <div class="tile">
+    <div class="tile-content">
+      <p class="tile-title h5">
+        <a href="{{ .URL | relURL }}">
+            {{ .Title }}
+        </a>
+        &raquo;
+      </p>
+      <p class="tile-subtitle text-gray">
+          {{ .PublishDate.Format "02 Jan 2006" }}, tagged:
+          {{ $tags := .Params.Tags }}
+          {{ $tagCount := len $tags }}
+          {{ range $index, $tag := $tags }}
+              <a href="{{ "/tags/" | relURL }}{{ $tag | urlize }}" class="">
+                  {{ $tag }}{{ if gt $tagCount (add $index 1)}}, {{ end }}
+              </a>
+          {{ end }}
+      </p>
+    </div>
+  </div>
+</article>

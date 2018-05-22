@@ -1,14 +1,24 @@
-
 {{ define "main" }}
-
-<div>
-    {{ .Content }}
+<div class="columns">
+    <div class="column">
+        {{ .Content }}
+    </div>
 </div>
+<div class="columns">
+    <div class="column">
 
-<h1>Recent Posts</h1>
+        <h4>Recent Blog Posts</h4>
 
-{{ range first 10 (where .Data.Pages "Type" "posts").ByPublishDate.Reverse }}
-    {{ .Render "summary" }}
-{{ end }}
+        {{ range first 3 (where .Data.Pages "Type" "posts").ByPublishDate.Reverse }}
+        {{ .Render "summary" }}
+        {{ end }}
+
+        <div class="text-right">
+            <a href="{{ "/posts" | relURL }}">
+                More blog posts &rarrc;
+            </a>
+        </div>
+    </div>
+</div>
 
 {{ end }}

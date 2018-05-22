@@ -1,3 +1,15 @@
-<footer>
-    i'm the footer
-</footer>
+<div class="divider"></div>
+<div class="container grid-lg mb-2">
+    <footer class="navbar text-gray">
+        <section class="navbar-section">
+            &copy; 2018 {{ .Site.Author.name }}
+        </section>
+        <section class="navbar-center">
+            <a href="mailto:{{ .Site.Author.email }}" class="btn btn-link">Email</a> |
+            <a href="https://github.com/{{ .Site.Author.github }}" class="btn btn-link">Github</a> |
+            <a href="{{ .Site.RSSLink | relURL }}" class="btn btn-link">RSS</a>
+
+        </section>
+        <section class="navbar-section"></section>
+    </footer>
+</div>

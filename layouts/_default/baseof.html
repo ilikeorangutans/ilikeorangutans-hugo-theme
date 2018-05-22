@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <title>{{ block "title" . }}
-      {{ .Site.Title }}
-    {{ end }}</title>
+    {{ partial "header" . }}
   </head>
   <body>
     {{ block "mainnav" . }}
-      {{ partial "mainnav" . }}
+    {{ partial "mainnav" . }}
     {{ end }}
-    {{ block "main" . }}
-    {{ end }}
+    <main class="container grid-lg content">
+      {{ block "main" . }}
+      {{ end }}
+    </main>
     {{ block "footer" . }}
-      {{ partial "footer" . }}
+    {{ partial "footer" . }}
     {{ end }}
   </body>
 </html>

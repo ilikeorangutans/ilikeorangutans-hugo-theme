@@ -1,0 +1,15 @@
+    <meta charset="utf-8">
+    <title>{{ block "title" . }}
+      {{ .Site.Title }}
+    {{ end }}</title>
+
+    <meta name="author" value="{{ .Site.Author.name }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="alternate" href="{{ .Site.RSSLink }}" type="application/rss+xml" title="{{ .Site.Title }}">
+
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}">
+
+    <link rel="canonical" href="{{ .Site.BaseURL }}">
