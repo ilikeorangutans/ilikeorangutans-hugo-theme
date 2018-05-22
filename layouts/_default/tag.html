@@ -1,12 +1,15 @@
 {{ define "main" }}
 <h1>
-    {{ .Data.Term }}
+    {{ .Data.Term | title }}
 </h1>
+
+<p>
+    &larrhk; <a href="{{ "/tags" | relURL }}">all tags</a>
+</p>
+
+<p>Pages tagged with "{{ .Data.Term }}":</p>
 {{ range .Data.Pages }}
-    <a href="{{ .Permalink | relURL }}">
-        {{ .Title }}
-        {{ .Permalink }}
-    </a>
+    {{ .Render "summary" }}
 {{ end }}
 
 

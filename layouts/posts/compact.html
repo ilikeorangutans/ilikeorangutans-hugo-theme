@@ -10,11 +10,13 @@
       <p class="tile-subtitle text-gray">
           {{ .PublishDate.Format "02 Jan 2006" }}, tagged:
           {{ $tags := .Params.Tags }}
+          {{ if $tags }}
           {{ $tagCount := len $tags }}
           {{ range $index, $tag := $tags }}
-              <a href="{{ "/tags/" | relURL }}{{ $tag | urlize }}" class="">
+              <a href="{{ "/tags/" | relURL }}{{ $tag | urlize }}">
                   {{ $tag }}{{ if gt $tagCount (add $index 1)}}, {{ end }}
               </a>
+          {{ end }}
           {{ end }}
       </p>
     </div>
