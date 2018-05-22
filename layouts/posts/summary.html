@@ -8,13 +8,15 @@
                 </a>
             </p>
             <p class="tile-subtitle">
-                {{ .PublishDate.Format "02 Jan 2006" }}, tagged:
+                {{ .PublishDate.Format "02 Jan 2006" }}
                 {{ $tags := .Params.Tags }}
+                {{ if $tags }}, tagged:
                 {{ $tagCount := len $tags }}
                 {{ range $index, $tag := $tags }}
                     <a href="{{ "/tags/" | relURL }}{{ $tag | urlize }}" class="">
                         {{ $tag }}{{ if gt $tagCount (add $index 1)}}, {{ end }}
                     </a>
+                {{ end }}
                 {{ end }}
             </p>
             <p class="tile-subtitle">

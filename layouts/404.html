@@ -1,0 +1,11 @@
+{{ define "main" }}
+
+  <h1>404 - File not Found</h1>
+  <p>Yeah, the page you're looking for is not here! But maybe I can interest you in some of the other stuff I have here?</p>
+
+  {{ range first 10 .Data.Pages.ByLastmod.Reverse }}
+    {{ .Render "summary"  }}
+  {{ end }}
+
+
+{{ end }}

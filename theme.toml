@@ -1,9 +1,6 @@
-# theme.toml template for a Hugo theme
-# See https://github.com/gohugoio/hugoThemes#themetoml for an example
-
-name = "Ilikeorangutans"
+name = "ilikeorangutans"
 license = "MIT"
-licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE.md"
+licenselink = "https://github.com/ilikeorangutans/ilikeorangutans-hugo-theme/blob/master/LICENSE.md"
 description = ""
 homepage = "http://example.com/"
 tags = []
@@ -11,11 +8,5 @@ features = []
 min_version = "0.38"
 
 [author]
-  name = ""
-  homepage = ""
-
-# If porting an existing theme
-[original]
-  name = ""
-  homepage = ""
-  repo = ""
+  name = "Jakob Külzer"
+  homepage = "https://ilikeorangutans.github.io"
