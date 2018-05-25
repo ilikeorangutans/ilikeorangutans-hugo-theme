@@ -1,0 +1,9 @@
+{{ $tags := . }}
+{{ if $tags }}, tagged:
+{{ $tagCount := len $tags }}
+{{ range $index, $tag := $tags }}
+    <a href="{{ "/tags/" | relURL }}{{ $tag | urlize }}" class="">
+        {{ $tag }}{{ if gt $tagCount (add $index 1)}}, {{ end }}
+    </a>
+{{ end }}
+{{ end }}

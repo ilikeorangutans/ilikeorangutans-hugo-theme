@@ -1,8 +1,13 @@
 {{ define "main" }}
-    <div class="columns">
+    <div class="columns mb-2">
         <div class="column">
+            <p class="text-gray">
+                {{ partial "publish_date_and_tags" . }}
+            </p>
+            <div class="divider"></div>
             <h1>{{ .Title }}</h1>
             {{ .Content }}
+            <div class="divider"></div>
         </div>
     </div>
     {{ template "_internal/disqus.html" . }}

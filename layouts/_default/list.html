@@ -5,6 +5,9 @@
 {{ range $paginator.Pages }}
     {{ .Render "compact" }}
 {{ end }}
-{{ template "_internal/pagination.html" . }}
+
+<div class="divider"></div>
+
+{{ partial "pagination" . }}
 
 {{ end }}
