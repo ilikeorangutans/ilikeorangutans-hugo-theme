@@ -1,11 +1,14 @@
 {{ define "main" }}
 {{ .Content }}
 
-{{ $paginator := .Paginate (where .Site.Pages "Type" "posts") }}
-{{ range $paginator.Pages }}
-    {{ .Render "compact" }}
-{{ end }}
+<div class="columns">
 
+    {{ $paginator := .Paginate (where (where .Site.Pages "Type" .Type) "Kind" "page" ) }}
+    {{ range $paginator.Pages }}
+    {{ .Render "compact" }}
+    {{ end }}
+
+</div>
 <div class="divider"></div>
 
 {{ partial "pagination" . }}
