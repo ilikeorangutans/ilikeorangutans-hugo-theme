@@ -7,7 +7,7 @@
     </section>
     <section class="navbar-section">
       {{ range .Site.Menus.main }}
-        <a href="{{ .URL }}" class="btn btn-link">
+        <a href="{{ .URL }}" class="mr-2 ml-2">
           {{ .Name | title }}
         </a>
       {{ end }}
@@ -22,7 +22,7 @@
     </div>
     <div class="column col-12">
       {{ range .Site.Menus.main }}
-        <a href="{{ .URL }}" class="btn btn-link">
+        <a href="{{ .URL }}" class="mr-2 ml-1">
           {{ .Name | title }}
         </a>
       {{ end }}
