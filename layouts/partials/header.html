@@ -1,5 +1,8 @@
     <meta charset="utf-8">
     <title>{{ block "title" . }}
+      {{ if .Title }}
+        {{ .Title }} &mdash;
+      {{ end }}
       {{ .Site.Title }}
     {{ end }}</title>
 
