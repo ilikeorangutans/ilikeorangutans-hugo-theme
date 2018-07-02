@@ -5,6 +5,7 @@
                 {{ partial "publish_date_and_tags" . }}
             </p>
             <div class="divider"></div>
+            {{ if .Draft }} <h2>[DRAFT]</h2> {{ end }}
             <h1>{{ .Title }}</h1>
             {{ .Content }}
             <div class="divider"></div>

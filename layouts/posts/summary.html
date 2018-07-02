@@ -4,6 +4,7 @@
         <div class="tile-content">
             <p class="tile-title h4">
                 <a href="{{ .URL | relURL }}">
+                    {{ if .Draft }} [DRAFT] {{ end }}
                     {{ .Title }}
                 </a>
             </p>
