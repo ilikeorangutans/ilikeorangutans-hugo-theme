@@ -2,23 +2,23 @@
   <div class="tile">
     <div class="tile-content">
       <p class="tile-title h5">
-        <a href="{{ .URL | relURL }}">
-            {{ if .Draft }} [DRAFT] {{ end }}
-            {{ .Title }}
+        <a href="{{ .Permalink | relURL }}">
+          {{ if .Draft }} [DRAFT] {{ end }}
+          {{ .Title }}
         </a>
         &raquo;
       </p>
       <p class="tile-subtitle text-gray">
-          {{ .PublishDate.Format "02 Jan 2006" }}, tagged:
-          {{ $tags := .Params.Tags }}
-          {{ if $tags }}
-          {{ $tagCount := len $tags }}
-          {{ range $index, $tag := $tags }}
-              <a href="{{ "/tags/" | relURL }}{{ $tag | urlize }}">
-                  {{ $tag }}{{ if gt $tagCount (add $index 1)}}, {{ end }}
-              </a>
-          {{ end }}
-          {{ end }}
+        {{ .PublishDate.Format "02 Jan 2006" }}, tagged:
+        {{ $tags := .Params.Tags }}
+        {{ if $tags }}
+        {{ $tagCount := len $tags }}
+        {{ range $index, $tag := $tags }}
+        <a href="{{ " /tags/" | relURL }}{{ $tag | urlize }}">
+          {{ $tag }}{{ if gt $tagCount (add $index 1)}}, {{ end }}
+        </a>
+        {{ end }}
+        {{ end }}
       </p>
     </div>
   </div>

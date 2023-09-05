@@ -1,22 +1,22 @@
 <article class="mb-2">
-    <div class="divider"></div>
-    <div class="tile">
-        <div class="tile-content">
-            <p class="tile-title h4">
-                <a href="{{ .URL | relURL }}">
-                    {{ if .Draft }} [DRAFT] {{ end }}
-                    {{ .Title }}
-                </a>
-            </p>
-            <p class="tile-subtitle">
-                {{ partial "publish_date_and_tags" . }}
-            </p>
-            <p class="tile-subtitle">
-                {{ .Summary }}
-            </p>
-            <p class="tile-action">
-                <a href="{{ .URL | relURL }}" class="btn-primary">read more &rarr;</a>
-            </p>
-        </div>
+  <div class="divider"></div>
+  <div class="tile">
+    <div class="tile-content">
+      <p class="tile-title h4">
+        <a href="{{ .Permalink | relURL }}">
+          {{ if .Draft }} [DRAFT] {{ end }}
+          {{ .Title }}
+        </a>
+      </p>
+      <p class="tile-subtitle">
+        {{ partial "publish_date_and_tags" . }}
+      </p>
+      <p class="tile-subtitle">
+        {{ .Summary }}
+      </p>
+      <p class="tile-action">
+        <a href="{{ .Permalink | relURL }}" class="btn-primary">read more &rarr;</a>
+      </p>
     </div>
+  </div>
 </article>
