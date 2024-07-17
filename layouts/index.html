@@ -9,7 +9,7 @@
 
         <h4>Recent Blog Posts</h4>
 
-        {{ range first 4 .Site.Pages.ByPublishDate.Reverse }}
+        {{ range (where .Site.Pages "Type" "posts").ByPublishDate.Reverse.Limit 4 }}
         {{ .Render "summary" }}
         {{ end }}
 
