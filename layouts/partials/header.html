@@ -13,7 +13,10 @@
     <meta property="og:url" content="{{ .Permalink }}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="alternate" href="{{ .Site.RSSLink }}" type="application/rss+xml" title="{{ .Site.Title }}">
+
+    {{ with .OutputFormats.Get "rss" -}}
+      {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+    {{ end }}
 
     <link rel="stylesheet" href="{{ "/css/spectre.min.css" | relURL }}">
     <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}">
