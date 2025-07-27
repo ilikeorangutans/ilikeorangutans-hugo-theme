@@ -1,22 +1,35 @@
-<article class="mb-2">
-  <div class="divider"></div>
-  <div class="tile">
-    <div class="tile-content">
-      <p class="tile-title h4">
-        <a href="{{ .Permalink | relURL }}">
-          {{ if .Draft }} [DRAFT] {{ end }}
-          {{ .Title }}
-        </a>
-      </p>
-      <p class="tile-subtitle">
-        {{ partial "publish_date_and_tags" . }}
-      </p>
-      <p class="tile-subtitle">
+
+<article class="bg-white rounded-lg shadow-sm mb-8 overflow-hidden">
+    <div class="p-6">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4 hover:text-teal-600 transition-colors">
+            <a href="{{ .Permalink | relURL }}">
+                {{ if .Draft }} [DRAFT] {{ end }}
+                {{ .Title }}
+            </a>
+        </h2>
+        <div class="flex items-center space-x-4 text-sm text-gray-500 mb-3">
+            <time datetime="{{ .PublishDate.Format "2006-01-02" }}">
+                {{ .PublishDate.Format "2 Jan 2006" }}
+            </time>
+            <span>{{ printf "%d min read" .ReadingTime }}</span>
+            <div class="flex items-center">
+                <div class="flex flex-wrap gap-2">
+                    {{ range .Params.Tags }} 
+                    <a href="{{ "/tags/" | relURL }}{{ . | urlize }}" class="bg-gray-100 hover:bg-teal-100 text-gray-700 hover:text-teal-800 px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 cursor-pointer">
+                        {{ . }}
+                    </a>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+        <p class="text-gray-600 text-lg leading-relaxed mb-4">
         {{ .Summary }}
-      </p>
-      <p class="tile-action">
-        <a href="{{ .Permalink | relURL }}" class="btn-primary">read more &rarr;</a>
-      </p>
+        </p>
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2"></div>
+            <a href="{{ .Permalink | relURL }}" class="text-teal-600 hover:text-teal-800 font-medium transition-colors">
+                Read more →
+            </a>
+        </div>
     </div>
-  </div>
 </article>

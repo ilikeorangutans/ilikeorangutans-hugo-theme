@@ -1,32 +1,14 @@
-<div class="container grid-lg">
-  <header class="navbar hide-sm">
-    <section class="navbar-section">
-      <a href="{{ "/" | relURL }}" class="navbar-brand">
-        {{ .Site.Title }}
-      </a>
-    </section>
-    <section class="navbar-section">
-      {{ range .Site.Menus.main }}
-        <a href="{{ .URL }}" class="mr-2 ml-2">
-          {{ .Name | title }}
-        </a>
-      {{ end }}
-    </section>
-  </header>
-
-  <header class="show-sm columns">
-    <div class="column col-12">
-      <a href="{{ "/" | relURL }}" class="navbar-brand">
-        {{ .Site.Title }}
-      </a>
+<header class="bg-white shadow-sm border-b">
+    <div class="max-w-4xl mx-auto px-4 py-6">
+        <nav class="flex justify-between items-center">
+            <a href="{{ "/" | relURL }}" class="navbar-brand">
+                <h1 class="text-2xl font-bold text-teal-900 hover:text-orange-400 transition-colors">{{ .Site.Title }}</h1>
+            </a>
+            <div class="space-x-6">
+                {{ range .Site.Menus.main }}
+                <a href="{{ .URL }}" class="text-gray-600 hover:text-orange-400 transition-colors">{{ .Name }}</a>
+                {{ end }}
+            </div>
+        </nav>
     </div>
-    <div class="column col-12">
-      {{ range .Site.Menus.main }}
-        <a href="{{ .URL }}" class="mr-2 ml-1">
-          {{ .Name | title }}
-        </a>
-      {{ end }}
-    </div>
-  </header>
-</div>
-<div class="divider"></div>
+</header>

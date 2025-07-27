@@ -1,25 +1,13 @@
 {{ define "main" }}
-<div class="columns">
-    <div class="column">
-        {{ .Content }}
-    </div>
+<div class="">
+    {{ .Content }}
 </div>
-<div class="columns">
-    <div class="column">
 
-        <h4>Recent Blog Posts</h4>
+<h4 class="text-lg mt-3 mb-3">Recent Blog Posts</h4>
 
-        {{ range (where .Site.Pages "Type" "posts").ByPublishDate.Reverse.Limit 4 }}
-        {{ .Render "summary" }}
-        {{ end }}
-
-        <div class="text-right">
-            <a href="{{ "/posts" | relURL }}">
-                More blog posts &rarrc;
-            </a>
-        </div>
-    </div>
-</div>
+{{ range (where .Site.Pages "Type" "posts").ByPublishDate.Reverse.Limit 4 }}
+{{ .Render "summary" }}
+{{ end }}
 
 {{ end }}
 

@@ -1,18 +1,15 @@
-<div class="divider"></div>
-<div class="container grid-lg mb-2">
-    <footer class="navbar text-gray">
-        <section class="navbar-section">
-            &copy; 2018 {{ .Site.Params.Author.name }}
-        </section>
-        <section class="navbar-center">
-            <a href="mailto:{{ .Site.Params.Author.email }}" class="btn btn-link">Email</a> |
-            <a href="https://github.com/{{ .Site.Params.Author.github }}" target="_blank" class="btn btn-link">Github</a> |
-            <a href="https://www.linkedin.com/in/jakobkuelzer/" target="_blank" class="btn btn-link">LinkedIn</a> |
-
-            {{ with .OutputFormats.Get "rss" -}}
-              {{ printf ` <a href=%q target="_blank" class="btn btn-link">RSS</a>` .Permalink | safeHTML }}
-            {{ end }}
-        </section>
-        <section class="navbar-section"></section>
-    </footer>
-</div>
+<footer class="bg-white border-t mt-12">
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <div class="text-center text-gray-600">
+            <p>&copy; 2025 {{ .Site.Params.Author.name }}. All rights reserved.</p>
+            <div class="mt-4 space-x-6">
+                <a href="mailto:{{ .Site.Params.Author.email }}" class="hover:text-teal-600 transition-colors">Email</a>
+                <a href="https://github.com/{{ .Site.Params.Author.github }}" target="_blank" class="hover:text-teal-600 transition-colors">Github</a> 
+                <a href="https://www.linkedin.com/in/jakobkuelzer/" target="_blank" class="hover:text-teal-600 transition-colors">LinkedIn</a> 
+                {{ with .OutputFormats.Get "rss" -}}
+                {{ printf ` <a href=%q target="_blank" class="hover:text-teal-600 transition-colors">RSS</a>` .Permalink | safeHTML }}
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</footer>
