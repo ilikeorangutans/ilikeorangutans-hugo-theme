@@ -2,11 +2,11 @@
 <div class="container grid-lg mb-2">
     <footer class="navbar text-gray">
         <section class="navbar-section">
-            &copy; 2018 {{ .Site.Author.name }}
+            &copy; 2018 {{ .Site.Params.Author.name }}
         </section>
         <section class="navbar-center">
-            <a href="mailto:{{ .Site.Author.email }}" class="btn btn-link">Email</a> |
-            <a href="https://github.com/{{ .Site.Author.github }}" target="_blank" class="btn btn-link">Github</a> |
+            <a href="mailto:{{ .Site.Params.Author.email }}" class="btn btn-link">Email</a> |
+            <a href="https://github.com/{{ .Site.Params.Author.github }}" target="_blank" class="btn btn-link">Github</a> |
             <a href="https://www.linkedin.com/in/jakobkuelzer/" target="_blank" class="btn btn-link">LinkedIn</a> |
 
             {{ with .OutputFormats.Get "rss" -}}

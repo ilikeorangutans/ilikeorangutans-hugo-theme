@@ -6,7 +6,7 @@
       {{ .Site.Title }}
     {{ end }}</title>
 
-    <meta name="author" value="{{ .Site.Author.name }}">
+    <meta name="author" value="{{ .Site.Params.Author.name }}">
     <meta property="og:title" content="{{ .Title }}">
     <meta property="og:description" content="{{ .Summary }}">
     <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
