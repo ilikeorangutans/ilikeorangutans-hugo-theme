@@ -1,5 +1,5 @@
 {{ define "main" }}
-<article class="bg-white rounded-lg shadow-sm overflow-hidden">
+<main class="bg-white rounded-lg shadow-sm overflow-hidden">
     <div class="p-6">
         <div class="text-sm text-gray-500 ">
             <time datetime="{{ .PublishDate.Format "2006-01-02" }}">
@@ -42,5 +42,5 @@
 
         {{ partial "pagination" . }}
     </div> 
-</article>
+</main>
 {{ end }}

@@ -1,14 +1,47 @@
 {{ define "main" }}
-<div class="prose">
-{{ .Content }}
-</div>
+<main class="bg-white rounded-lg shadow-sm overflow-hidden">
+    <div class="p-6">
+        <div class="text-sm text-gray-500 ">
+            <time datetime="{{ .PublishDate.Format "2006-01-02" }}">
+                {{ .PublishDate.Format "2 Jan 2006" }}
+            </time>
+            {{ if ne .PublishDate .Lastmod }} 
+            <time datetime="{{ .Lastmod.Format "2006-01-02" }}">
+                • updated {{ .Lastmod.Format "2 Jan 2006" }}
+            </time>
+            {{ end }}
+        </div>
+        <!-- Article Title -->
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+            {{ if .Draft }} [DRAFT] {{ end }}
+            {{ .Title }}
+        </h1>
 
-{{ $paginator := .Paginate (where (where .Site.Pages "Type" .Type) "Kind" "page" ) }}
-{{ range $paginator.Pages }}
-{{ .Render "compact" }}
-{{ end }}
+        {{ if .Params.Tags }}
+        <div class="flex items-center justify-between mb-8 pb-6 border-b border-gray-200">
+            <div class="flex flex-wrap gap-2 mb-4">
+                {{ range .Params.Tags }} 
+                <a href="{{ "/tags/" | relURL }}{{ . | urlize }}" class="bg-gray-100 hover:bg-teal-100 text-gray-700 hover:text-teal-800 px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 cursor-pointer">
+                    {{ . }}
+                </a>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+        <div class="prose prose-lg max-w-none">
+            {{ .Content }}
+        </div>
+
+        {{ $paginator := .Paginate (where (where .Site.Pages "Type" .Type) "Kind" "page" ) }}
+        {{ range $paginator.Pages }}
+        {{ .Render "compact" }}
+        {{ end }}
 
 
-{{ partial "pagination" . }}
+        {{ partial "pagination" . }}
+
+    </div>
+</main>
 
 {{ end }}
