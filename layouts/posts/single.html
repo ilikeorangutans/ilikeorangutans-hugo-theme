@@ -1,5 +1,14 @@
 {{ define "main" }}
 <article class="bg-white rounded-lg shadow-sm overflow-hidden">
+    <!-- Featured Image -->
+    <!--
+        Maybe some day i'll add support for header images
+        <div class="w-full h-64 md:h-80 bg-gradient-to-r from-teal-400 to-blue-500 flex items-center justify-center">
+        <img src="https://via.placeholder.com/800x400" alt="Building Modern Web Components" class="w-full h-full object-cover">
+        </div>
+    -->
+
+    <!-- Article Content -->
     <div class="p-6">
         <div class="text-sm text-gray-500 ">
             <time datetime="{{ .PublishDate.Format "2006-01-02" }}">
@@ -17,7 +26,6 @@
             {{ .Title }}
         </h1>
 
-        {{ if .Params.Tags }}
         <div class="flex items-center justify-between mb-8 pb-6 border-b border-gray-200">
             <div class="flex flex-wrap gap-2 mb-4">
                 {{ range .Params.Tags }} 
@@ -27,12 +35,11 @@
                 {{ end }}
             </div>
         </div>
-        {{ end }}
 
         <div class="prose prose-lg max-w-none">
             {{ .Content }}
         </div>
     </div>
 </article>
-{{ template "_internal/disqus.html" . }}
+    {{ template "_internal/disqus.html" . }}
 {{ end }}

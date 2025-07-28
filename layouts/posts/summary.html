@@ -22,14 +22,18 @@
                 </div>
             </div>
         </div>
-        <p class="text-gray-600 text-lg leading-relaxed mb-4">
-        {{ .Summary }}
-        </p>
+        <div class="prose">
+            <p class="text-gray-600 text-lg leading-relaxed mb-4">
+            {{ .Summary }}
+            </p>
+        </div>
         <div class="flex items-center justify-between">
             <div class="flex items-center space-x-2"></div>
+            {{ if .Truncated }} 
             <a href="{{ .Permalink | relURL }}" class="text-teal-600 hover:text-teal-800 font-medium transition-colors">
                 Read more →
             </a>
+            {{ end }}
         </div>
     </div>
 </article>

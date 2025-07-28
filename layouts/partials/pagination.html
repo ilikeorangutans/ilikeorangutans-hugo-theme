@@ -1,21 +1,23 @@
 {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) }}
-
-<ul class="pagination">
+<nav class="flex items-center justify-between  px-6 py-4 ">
     {{ if .Paginator.HasPrev }}
-    <li class="page-item column">
-        <a href="{{ .Paginator.Prev.URL }}">
-            &larr; Previous Page
-        </a>
-    </li>
+    <a href="{{ .Paginator.Prev.URL }}" class="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-teal-50 hover:text-teal-700 hover:border-teal-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Newer Posts
+    </a>
     {{ end }}
+
+    <div class="flex items-center space-x-2"></div>
 
     {{ if .Paginator.HasNext }}
-    <li class="page-item column text-right">
-        <a href="{{ .Paginator.Next.URL }}">
-            Next Page &rarr;
-        </a>
-    </li>
+    <a href="{{ .Paginator.Next.URL }}" class="flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-teal-50 hover:text-teal-700 hover:border-teal-300 transition-colors">
+        Older Posts
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+    </a>
     {{ end }}
-</ul>
-
+</nav>
 {{ end }}
