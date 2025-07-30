@@ -1,16 +1,21 @@
 {{ define "main" }}
-<h1>
-    {{ .Data.Term | title }}
-</h1>
+<main class="bg-white rounded-lg shadow-sm overflow-hidden">
+    <div class="p-6">
+        <nav class="mb-4">
+            <a href="/tags" class="text-teal-600 hover:text-teal-800 no-underline hover:underline text-sm">
+                ← All Tags
+            </a>
+        </nav>
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+            Tagged with <span class="bg-teal-100 text-gray-700 hover:text-teal-800 px-3 py-1 rounded-full ">{{ .Data.Term | title }}</span>
+        </h1>
 
-<p>
-    &larrhk; <a href="{{ "/tags" | relURL }}">all tags</a>
-</p>
+        {{ $paginator := .Paginate  .Pages.ByPublishDate.Reverse }}
+        {{ range $paginator.Pages }}
+        {{ .Render "compact" }}
+        {{ end }}
 
-<p>Pages tagged with "{{ .Data.Term }}":</p>
-{{ range .Data.Pages }}
-    {{ .Render "summary" }}
-{{ end }}
-
-
+        {{ partial "pagination" . }}
+    </div>
+</main>
 {{ end }}
