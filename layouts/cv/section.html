@@ -1,0 +1,132 @@
+
+{{ define "main" }}
+<div class="max-w-4xl mx-auto bg-white shadow-lg">
+    <header class="steelblue text-white p-8">
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between">
+            <div>
+                <h1 class="text-3xl font-bold mb-2">{{ .Site.Params.Author.name }}</h1>
+                <p class="text-teal-100 text-lg">Senior Software Engineer</p>
+            </div>
+            <div class="mt-4 md:mt-0 text-sm space-y-1">
+                <div class="flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                    </svg>
+                    {{ .Site.Params.Author.email }}
+                </div>
+                <div class="flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path>
+                    </svg>
+                    Toronto, Canada
+                </div>
+                <!--
+                <div class="flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                    </svg>
+                    (555) 123-4567
+                </div>
+                -->
+            </div>
+        </div>
+    </header>
+
+    <div class="p-8">
+        <!-- Professional Summary -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-teal-600 pb-2">Professional Summary</h2>
+            <p class="text-gray-700 leading-relaxed">
+            {{ .Content }}
+            </p>
+        </section>
+
+        <!-- Work Experience -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 border-b-2 border-teal-600 pb-2">Work Experience</h2>
+
+            {{ range .Page.Pages.ByDate.Reverse }} 
+            <div class="mb-8 border-l-4 border-teal-600 pl-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-900">{{ .Title }}</h3>
+                        <p class="text-gray-600">{{ .Param "location" }}</p>
+                    </div>
+                    <div class="text-sm text-gray-500 mt-2 md:mt-0">
+                        <span class="bg-gray-100 px-3 py-1 rounded-full">
+                            {{ .Date.Format "Jan 2006" }} - {{ if .Param "end_date" }} {{ (time.AsTime (.Param "end_date")).Format "Jan 2006" }} {{ else }} Present {{ end }}
+                        </span>
+                    </div>
+                </div>
+
+                {{ range .Pages.ByDate.Reverse }}
+                <div class="mb-6 bg-gray-50 rounded-lg p-4">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+                        <h4 class="text-lg font-medium text-gray-900">{{ .Title }}</h4>
+                        <span class="text-sm text-teal-600 font-medium mt-1 md:mt-0">
+                            {{ .Date.Format "Jan 2006" }} - {{ if .Param "end_date" }} {{ (time.AsTime (.Param "end_date")).Format "Jan 2006" }} {{ else }} Present {{ end }}
+                        </span>
+                    </div>
+                    <ul class="text-gray-700 space-y-2 text-sm leading-relaxed">
+                        {{ if .Param "summaries" }}
+                        {{ range (.Param "summaries") }}
+                        <li class="flex items-start">
+                            <span class="text-teal-600 mr-2 mt-1">•</span>
+                            {{ . }}
+                        </li>
+                        {{ end }} 
+                        {{ end }}
+                    </ul>
+                </div>
+                {{ end }}
+            </div>
+            {{ end }}
+
+        <!-- Skills -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-teal-600 pb-2">Technical Skills</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Languages</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">Go</span>
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">Ruby</span>
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">Scala</span>
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">Java</span>
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">Elm</span>
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">Zig</span>
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">and more...</span>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-900 mb-2">Technologies</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">Kubernetes</span>
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">Relational Databases</span>
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">Apache Zookeeper</span>
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">Apache Spark</span>
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">Linux</span>
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">TCP/IP Networking</span>
+                        <span class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-sm">Git</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section>
+            <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b-2 border-teal-600 pb-2">Education</h2>
+            <div class="border-l-4 border-teal-200 pl-6">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-900">Bachelor of Science in Computer Science</h3>
+                        <p class="text-gray-600">Fachhochschule München</p>
+                    </div>
+                    <span class="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full mt-2 md:mt-0">2007 - 2009</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+{{ end }}
